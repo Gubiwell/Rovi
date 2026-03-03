@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Rovi2">
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.rovi2.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="SEGREDO!" />
+
+        <activity
+            android:name=".view.MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps"
+            android:theme="@style/Theme.Rovi2" />
+
+        <!-- 2. Tela de Boas-Vindas -->
+        <activity
+            android:name=".view.WelcomeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Rovi2.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 3. Tela Principal (Lista de Roteiros) -->
+        <activity
+            android:name=".view.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Rovi2">
+        <!-- RETIRAR ISSO SE DER ERRADO-->
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data android:scheme="content" />
+            <data android:mimeType="application/octet-stream" />
+        </intent-filter>
+
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data android:scheme="content" />
+            <data android:host="*" />
+            <data android:pathPattern=".*\\.rovi" />
+        </intent-filter>
+        </activity>
+        <!-- NO CASO DAQUI PRA CIMA -->
+
+        <!-- 4. Tela de Adicionar Roteiro -->
+        <activity
+            android:name=".view.AddRoteiroActivity"
+            android:exported="false"
+            android:label="Adicionar Novo Roteiro"
+            android:theme="@style/Theme.Rovi2" />
+        <!-- 4. Tela de Detalhar Roteiro -->
+        <activity
+            android:name=".view.RoteiroDetailActivity"
+            android:exported="false"
+            android:label="Detalhes do Roteiro"
+            android:theme="@style/Theme.Rovi2" />
+    </application>
+
+</manifest>

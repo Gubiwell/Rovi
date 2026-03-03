@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Rovi2" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- ESTOU FORÇANDO A REMOÇÃO POR QUE ESSA BARRA NAO QUER SAIR -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <!-- TEMA DA SPLASH SCREEN -->
+    <style name="Theme.Rovi2.Splash" parent="Theme.SplashScreen">
+        <!--COR DE FUNDO ( DEFINIDA NA COLORS.XML) -->
+        <item name="windowSplashScreenBackground">@color/verde_claro_fundo</item>
+
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+
+        <!-- TEMA QUE O APP USA DPS DA SPLASH -->
+        <item name="postSplashScreenTheme">@style/Theme.Rovi2</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+</resources>
